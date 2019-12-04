@@ -1,0 +1,50 @@
+html { 
+    --border-width: 1px;
+    --cell-size: 3em;
+    --box-size: calc((var(--cell-size) + (var(--border-width) * 2)) * 3);
+    --game-size: calc((var(--box-size)  + (var(--border-width) * 2)) * 3);
+
+    --game-border-color: #000000;
+    --box-border-color: #333333;
+    --cell-border-color: #999999;
+    --focus-border-color: purple;
+    --focus-background-color: lavender;
+}
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--game-size);
+    border-width: var(--border-width);
+    border-color: var(--game-border-color);
+    border-style: solid;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--box-size);
+    border-width: var(--border-width);
+    border-color: var(--box-border-color);
+    border-style: solid;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--cell-size);
+    width: var(--cell-size);
+    border-width: var(--border-width);
+    border-color: var(--cell-border-color);;
+    border-style: solid;
+}
+
+.focused {
+    background: var(--focus-background-color);
+    border-color: var(--focus-border-color);
+}
+
+.readonly {
+    font-weight: bold;
+}
