@@ -14,6 +14,10 @@ const puzzles = {
     ]
 }
 
+let gameState = {
+    puzzleData: null
+}
+
 /**
  * Handle key input
  * @param {*} e 
@@ -155,21 +159,22 @@ function getCell(box, cell) {
  */
 function createGame(puzzleData) {
 
+    const gameTemplate = document.querySelector('.template--game');
+    const boxTemplate = document.querySelector('.template--box');
+    const cellTemplate = document.querySelector('.template--cell');
+
     // Generate game div
-    const game = document.createElement('div');
-    game.classList.add('game');
+    const game = getClone(gameTemplate);
 
     for (let b = 0; b < puzzleData.length; ++b) {
 
         const boxData = puzzleData[b];
-        const box = document.createElement('div');
-        box.classList.add('box');
+        const box = getClone(boxTemplate);
 
         for (let c = 0; c < boxData.length; ++c) {
 
             const cellData = boxData[c];
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
+            const cell = getClone(cellTemplate);
 
             if (cellData) {
 
@@ -194,10 +199,35 @@ function createGame(puzzleData) {
     setFocus(getCell(0,0));
 }
 
+function getClone(template) {
+    return document.importNode(template.content, true).firstElementChild;
+}
+
+function clearGame() {
+
+}
+
+function startGame(puzzleData) {
+
+    clearGame();
+    
+    gameState.puzzleData = puzzleData;
+
+    createGame(puzzleData);
+    startClock();
+}
+
+/**
+ * Reset the state of the current game.
+ */
+function resetGame() {
+    
+}
+
 document.addEventListener('DOMContentLoaded', () => {
  
     window.addEventListener('keyup', (e) => handleKeyPress(e));
 
-    createGame(puzzles.easy[0]);
+    createGstartGameame(puzzles.easy[0]);
     console.log(JSON.stringify(getGameData()));
 });

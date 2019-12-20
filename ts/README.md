@@ -2,7 +2,7 @@
 A simple, full service Sudoku game using vanilla JS concepts.
 
 ## // TODO:
-1. Use template objects to create/clone the cells and boxes.
+1. ~~Use template objects to create/clone the cells and boxes.~~
 1. Create custom elements for cell, box, and game.
 1. Load games from csv file.
 1. Game difficulty picker.
